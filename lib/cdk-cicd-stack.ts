@@ -3,18 +3,17 @@ import { CodeBuildStep, CodePipeline, CodePipelineSource, ShellStep } from 'aws-
 import { Construct } from 'constructs';
 import { PipelineStage } from './PipelineStage';
 
-export class CdkCicdStack1 extends cdk.Stack {
+export class CdkCicdStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    const pipeline = new CodePipeline(this, 'AndrewTonDemo1TranslationPipeline', {
-      pipelineName: 'AndrewTonDemo1TranslationPipeline',
+    const pipeline = new CodePipeline(this, 'AwesomePipeline', {
+      pipelineName: 'AwesomePipeline',
       synth: new ShellStep('Synth', {
-        input: CodePipelineSource.gitHub('7035477456/cicdDemo1', 'branch1'),
+        input: CodePipelineSource.gitHub('7035477456/cicdDemo1', 'branch2'),
         commands: [
           'cd cdk-cicd',
           'npm ci',
-          'npm install -g aws-cdk@2.138.0',  // Add this line
           'npx cdk synth'
         ],
         primaryOutputDirectory: 'cdk-cicd/cdk.out'
