@@ -10,7 +10,7 @@ export class CdkCicdStack1 extends cdk.Stack {
     const pipeline = new CodePipeline(this, 'AndrewTonDemo1TranslationPipeline', {
       pipelineName: 'AndrewTonDemo1TranslationPipeline',
       synth: new ShellStep('Synth', {
-        input: CodePipelineSource.gitHub('7035477456/mycicd', 'branch1'),
+        input: CodePipelineSource.gitHub('7035477456/cicdDemo1', 'branch1'),
         commands: [
           'cd cdk-cicd',
           'npm ci',
